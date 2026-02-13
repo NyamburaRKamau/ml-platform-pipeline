@@ -1,0 +1,32 @@
+{
+  "title": "Kubernetes Overview",
+  "uid": "kubernetes-overview",
+  "version": 1,
+  "panels": [
+    {
+      "title": "Cluster CPU Usage",
+      "targets": [
+        {
+          "expr": "sum(rate(container_cpu_usage_seconds_total[5m]))"
+        }
+      ]
+    },
+    {
+      "title": "Cluster Memory Usage",
+      "targets": [
+        {
+          "expr": "sum(container_memory_working_set_bytes)"
+        }
+      ]
+    },
+    {
+      "title": "Pod Count by Namespace",
+      "targets": [
+        {
+          "expr": "count(kube_pod_info) by (namespace)"
+        }
+      ]
+    }
+  ],
+  "tags": ["kubernetes", "cluster"]
+}

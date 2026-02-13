@@ -1,0 +1,36 @@
+{
+  "title": "Cost Dashboard",
+  "uid": "cost-dashboard",
+  "version": 1,
+  "panels": [
+    {
+      "title": "Node Count (Cost Driver)",
+      "targets": [
+        {
+          "expr": "count(kube_node_info)"
+        }
+      ]
+    },
+    {
+      "title": "PVC Storage Usage (GB)",
+      "targets": [
+        {
+          "expr": "sum(kubelet_volume_stats_used_bytes) / 1024 / 1024 / 1024"
+        }
+      ]
+    },
+    {
+      "title": "Load Balancer Count",
+      "targets": [
+        {
+          "expr": "count(kube_service_info{type=\"LoadBalancer\"})"
+        }
+      ]
+    },
+    {
+      "title": "Estimated Monthly Cost",
+      "description": "Rough estimate based on resource usage"
+    }
+  ],
+  "tags": ["cost", "finops"]
+}
